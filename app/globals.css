@@ -77,3 +77,7 @@ body{font-family:Manrope,Arial,sans-serif;font-synthesis:none}
 .header{height:78px;padding-left:2%;padding-right:2%}.footer{min-height:64px;padding:10px 2%}.header nav button{padding:9px 16px}.intro-content>.intro-caption{bottom:25%}.intro-word{bottom:1%}.intro-caption h1{font-size:18px}.intro-caption h1 span{font-size:16px}
 @media(max-width:760px){.header{height:125px;padding:16px 5% 70px}.footer{min-height:75px;padding:10px 5%}.header nav button{padding:9px 7px}.portrait-image{height:190%;top:-29%}.intro-content>.intro-caption{bottom:26%}.intro-word{bottom:5%}.intro-caption h1 span{font-size:14px}.secondary-composition .portrait-image{height:140%;top:-14%}}
 @media(max-height:550px){.header{height:65px}.footer{min-height:50px}.intro-content>.intro-caption{bottom:43%}.intro-word{bottom:0}}
+
+/* Wider, clean portrait; keep only the slow camera movement. */
+.portrait-image{height:185%;top:-28%}
+@media(max-width:760px){.portrait-image{height:155%;top:-17%}}

@@ -19,9 +19,9 @@ function Portrait({scene,step}:{scene:number;step:number}) {
  return <div ref={container} className={`portrait-stage portrait-scene-${scene} portrait-step-${step}`} aria-hidden="true">
   <div className="portrait-wash"/>
   <div className="portrait-composition">
-   <div className="portrait-parallax"><div className="portrait-breath"><img className="portrait-image" src="/dani-portret.png" alt="" fetchPriority="high"/><img className="portrait-image portrait-echo" src="/dani-portret.png" alt=""/><img className="portrait-image portrait-echo portrait-echo-far" src="/dani-portret.png" alt=""/></div></div>
+   <div className="portrait-parallax"><div className="portrait-breath"><img className="portrait-image" src="/dani-portret.png" alt="" fetchPriority="high"/></div></div>
   </div>
-  <div className="secondary-composition"><div className="portrait-parallax"><div className="portrait-breath"><img className="portrait-image" src="/dani-buiten.png" alt=""/><img className="portrait-image portrait-echo" src="/dani-buiten.png" alt=""/></div></div></div>
+  <div className="secondary-composition"><div className="portrait-parallax"><div className="portrait-breath"><img className="portrait-image" src="/dani-buiten.png" alt=""/></div></div></div>
   <div className="portrait-shade"/>
  </div>;
 }

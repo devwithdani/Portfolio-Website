@@ -1,5 +1,5 @@
 export type Journey = { scene: number; step: number };
-export const introWords = ['', 'AI.', 'Code.', 'Creativiteit.'];
+export const introWords = ['AI.', 'Code.', 'Design.', 'Klare taal.'];
 export function advanceJourney(current: Journey, direction: number): Journey {
  const delta = Math.sign(direction);
  if (!delta) return current;

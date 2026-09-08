@@ -54,3 +54,26 @@
 @media(max-width:760px){.portrait-image{height:122%;top:-6%;mask-image:linear-gradient(to right,transparent,black 8%,black 92%,transparent)}.portrait-wash{filter:grayscale(1) blur(25px) brightness(.3)}.intro-caption h1{font-size:18px}.intro-caption h1 span{font-size:14px}.intro-content>.intro-caption{bottom:30%}.intro-word{font-size:clamp(62px,16vw,116px);bottom:8%}.intro-content>.intro-scroll{top:2%}.portrait-stage:not(.portrait-scene-0) .portrait-shade{background:#080808c9}.portrait-scene-1 .portrait-composition,.portrait-scene-2 .portrait-composition{transform:translate3d(12%,0,0) scale(1.05)}.portrait-scene-3 .secondary-composition{transform:translate3d(10%,0,0)}.secondary-composition .portrait-image{height:115%;top:-5%}}
 @media(max-height:550px){.intro-content>.intro-caption{bottom:47%}.intro-word{font-size:70px;bottom:0}.intro-content>.intro-scroll{top:0}.intro-caption h1{font-size:16px}.intro-dots{margin-top:4px}}
 @media(prefers-reduced-motion:reduce){.portrait-parallax,.portrait-composition,.secondary-composition{transform:none!important}.intro-word{filter:none;transform:none!important}.intro-word:not(.word-active){opacity:0}.intro-word.word-active{opacity:1}}
+/* Locally hosted typefaces used by the reference, with restrained double exposure. */
+@font-face{font-family:Anton;src:url('/fonts/Anton-Regular.ttf') format('truetype');font-style:normal;font-weight:400;font-display:swap}
+@font-face{font-family:Manrope;src:url('/fonts/Manrope-Variable.ttf') format('truetype');font-style:normal;font-weight:200 800;font-display:swap}
+body{font-family:Manrope,Arial,sans-serif;font-synthesis:none}
+.intro-word,.intro-caption h1,.intro-caption h1 span,.detail-content h2{font-family:Anton,Impact,sans-serif;font-weight:400;font-synthesis:none}
+.intro-word{letter-spacing:-.025em;line-height:1.05;font-size:clamp(88px,14vw,190px);text-shadow:none}
+.intro-caption h1{font-size:19px;letter-spacing:1.4px}.intro-caption h1 span{font-size:17px;letter-spacing:0;color:#c6c6c6}
+.detail-content h2{font-size:clamp(36px,3.8vw,56px);line-height:1.13;letter-spacing:-.025em;max-width:600px}
+.portrait-breath{position:absolute;inset:0;animation:portrait-drift 13s ease-in-out infinite alternate;will-change:transform}
+.portrait-image.portrait-echo{z-index:1;opacity:.17;mix-blend-mode:screen;filter:grayscale(1) contrast(1.25) brightness(.58) blur(1px);animation:portrait-double 10s ease-in-out infinite alternate;will-change:transform,opacity;mask-image:linear-gradient(90deg,transparent 13%,black 33%,black 66%,transparent 84%)}
+.portrait-image.portrait-echo-far{opacity:.07;filter:grayscale(1) contrast(1.35) brightness(.42) blur(3px);animation-name:portrait-double-far;animation-duration:15s}
+@keyframes portrait-drift{0%{transform:translate3d(-5px,2px,0) scale(1.005) rotate(-.15deg)}50%{transform:translate3d(4px,-5px,0) scale(1.023) rotate(.1deg)}100%{transform:translate3d(8px,1px,0) scale(1.04) rotate(.2deg)}}
+@keyframes portrait-double{0%{transform:translate3d(calc(-50% - 27px + var(--pointer-x)*-8px),-4px,0) rotate(-.6deg) scale(1.015);opacity:.12}50%{opacity:.2}100%{transform:translate3d(calc(-50% - 65px + var(--pointer-x)*-8px),-12px,0) rotate(-1.3deg) scale(1.04);opacity:.14}}
+@keyframes portrait-double-far{0%{transform:translate3d(calc(-50% - 48px),-8px,0) scale(1.03);opacity:.05}100%{transform:translate3d(calc(-50% - 92px),-18px,0) scale(1.06);opacity:.09}}
+@media(max-width:760px){.intro-word{font-size:clamp(62px,16vw,116px)}.intro-caption h1{font-size:18px}.intro-caption h1 span{font-size:15px}.detail-content h2{font-size:38px}.portrait-image.portrait-echo{opacity:.12}.portrait-echo-far{display:none}}
+@media(max-height:550px){.intro-word{font-size:70px}}
+@media(prefers-reduced-motion:reduce){.portrait-breath{animation:none;transform:none}.portrait-image.portrait-echo{display:none}}
+/* Match the close portrait framing and lower caption of the supplied reference. */
+.portrait-image{height:240%;top:-44%}
+.portrait-image.portrait-echo{filter:grayscale(1) contrast(1.2) brightness(.7) blur(.6px)}
+.header{height:78px;padding-left:2%;padding-right:2%}.footer{min-height:64px;padding:10px 2%}.header nav button{padding:9px 16px}.intro-content>.intro-caption{bottom:25%}.intro-word{bottom:1%}.intro-caption h1{font-size:18px}.intro-caption h1 span{font-size:16px}
+@media(max-width:760px){.header{height:125px;padding:16px 5% 70px}.footer{min-height:75px;padding:10px 5%}.header nav button{padding:9px 7px}.portrait-image{height:190%;top:-29%}.intro-content>.intro-caption{bottom:26%}.intro-word{bottom:5%}.intro-caption h1 span{font-size:14px}.secondary-composition .portrait-image{height:140%;top:-14%}}
+@media(max-height:550px){.header{height:65px}.footer{min-height:50px}.intro-content>.intro-caption{bottom:43%}.intro-word{bottom:0}}

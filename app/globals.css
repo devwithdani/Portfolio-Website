@@ -81,3 +81,61 @@ body{font-family:Manrope,Arial,sans-serif;font-synthesis:none}
 /* Wider, clean portrait; keep only the slow camera movement. */
 .portrait-image{height:185%;top:-28%}
 @media(max-width:760px){.portrait-image{height:155%;top:-17%}}
+/* Shared margins and a single vertically spaced intro text group. */
+.header{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:24px;padding-inline:clamp(20px,2.5vw,40px)}
+.header .monogram{justify-self:start}.header .contact-button{justify-self:end}.header nav{justify-self:center}.footer{padding-inline:clamp(20px,2.5vw,40px)}
+.intro-content>.intro-lockup{position:absolute;bottom:clamp(12px,2vh,28px);left:5%;right:5%;text-align:center;transform:none}
+.intro-lockup .intro-caption{position:static;margin-bottom:14px}
+.intro-lockup h1{line-height:1.25}.intro-lockup h1 span{line-height:1.4;margin-top:7px}
+.intro-lockup .intro-words{position:relative;width:100%;height:1.12em;font-size:clamp(88px,14vw,190px)}
+.intro-lockup .intro-word{bottom:0;font-size:inherit;white-space:nowrap;line-height:1.12}
+@media(max-width:760px){.header{display:flex;justify-content:space-between;gap:16px;padding-inline:20px}.header nav{left:20px;right:20px}.footer{padding-inline:20px;gap:12px}.intro-lockup .intro-words{font-size:clamp(56px,15vw,110px)}.intro-lockup .intro-caption{margin-bottom:16px}.intro-content>.intro-lockup{bottom:24px;left:20px;right:20px}.intro-lockup h1 span{margin-top:6px}.scene-navigation{gap:8px}}
+@media(max-height:550px){.intro-lockup .intro-words{font-size:70px}.intro-content>.intro-lockup{bottom:8px}.intro-lockup .intro-caption{margin-bottom:8px}.intro-lockup h1 span{margin-top:4px}}
+@media(max-width:760px){.header{height:156px;padding:16px 20px 100px}.header nav{bottom:12px}.header nav button{line-height:1.4}.intro-content>.intro-lockup{bottom:20px}}
+/* Slightly smaller, lower intro typography. */
+.intro-lockup .intro-words{font-size:clamp(78px,11.8vw,160px)}
+.intro-content>.intro-lockup{bottom:clamp(4px,.8vh,10px)}
+.intro-lockup .intro-caption{margin-bottom:12px}
+@media(max-width:760px){.intro-lockup .intro-words{font-size:clamp(50px,13vw,96px)}.intro-content>.intro-lockup{bottom:12px}.intro-lockup .intro-caption{margin-bottom:13px}}
+@media(max-height:550px){.intro-lockup .intro-words{font-size:60px}.intro-content>.intro-lockup{bottom:4px}}
+/* Fade to the supplied side-facing portrait for AI & mogelijkheden. */
+.ai-composition{position:absolute;inset:0;opacity:0;transform:translate3d(20%,0,0) scale(1.045);transition:opacity 1500ms ease,transform 1800ms cubic-bezier(.22,.68,0,1);will-change:opacity,transform}
+.ai-composition .portrait-image{height:145%;top:-12%;filter:grayscale(1) contrast(1.1) brightness(.7)}
+.portrait-scene-1 .portrait-composition{opacity:0}
+.portrait-scene-1 .ai-composition{opacity:1;transform:translate3d(23%,0,0) scale(1)}
+@media(max-width:760px){.ai-composition .portrait-image{height:125%;top:-4%}.ai-composition{transform:translate3d(8%,0,0) scale(1.045)}.portrait-scene-1 .ai-composition{transform:translate3d(10%,0,0) scale(1)}}
+@media(prefers-reduced-motion:reduce){.ai-composition{transition:none;transform:none!important}}
+/* A little more movement, keeping the clean single portrait. */
+.portrait-parallax{transform:translate3d(calc(var(--pointer-x)*19px),calc(var(--pointer-y)*14px),0)}
+.portrait-breath{animation-duration:11s}
+@keyframes portrait-drift{0%{transform:translate3d(-8px,4px,0) scale(1.005) rotate(-.2deg)}50%{transform:translate3d(6px,-8px,0) scale(1.032) rotate(.12deg)}100%{transform:translate3d(12px,2px,0) scale(1.055) rotate(.28deg)}}
+@media(prefers-reduced-motion:reduce){.portrait-parallax,.portrait-breath{transform:none!important}.portrait-breath{animation:none!important}}
+/* Crisp monochrome: clear whites, deeper blacks and brighter portraits. */
+:root,.dark{--foreground:#fff;--primary:#fff;--accent:#fff;--ring:#fff;--muted-foreground:#ccc}
+.portfolio{color:#fff;background:#080808}
+.portrait-stage{background:#080808}
+.portrait-wash{filter:grayscale(1) blur(32px) brightness(.2) contrast(1.2)}
+.portrait-image{filter:grayscale(1) contrast(1.2) brightness(.92)}
+.ai-composition .portrait-image{filter:grayscale(1) contrast(1.18) brightness(.9)}
+.secondary-composition .portrait-image{filter:grayscale(1) contrast(1.18) brightness(.84)}
+.portrait-scene-2 .portrait-composition{opacity:1}
+.portrait-shade{background:linear-gradient(0deg,#050505e8,transparent 43%,#05050525),linear-gradient(90deg,#05050560,transparent 32%,transparent 72%,#05050545)}
+.intro-word{color:#fff}
+.intro-caption h1,.intro-caption h1 span,.detail-content h2,.detail-content h2 em,.detail-content .lead{color:#fff}
+.detail-content p{color:#e1e1e1}
+.header nav{background:#08080870;border-color:#ffffff40}
+.header nav button{color:#e2e2e2}
+.header nav button:hover,.header nav button[aria-current]{color:#fff;background:#ffffff20}
+.contact-button,.scene-navigation button{border-color:#ffffff50;color:#fff}
+.footer-brand,.footer-sub{color:#e1e1e1}.status-dot,.progress>span{background:#fff}.progress{background:#ffffff45}
+@media(max-width:760px){.portrait-wash{filter:grayscale(1) blur(25px) brightness(.2) contrast(1.2)}}
+/* Quiet, compact chrome around the photographic composition. */
+@media(min-width:761px){.header{height:70px;padding-inline:20px}.header nav{padding:5px}.header nav button{padding:8px 15px;font-weight:600}.footer{min-height:60px;padding:8px 20px}}
+.monogram{width:42px;height:42px;border:1px solid #ffffff30;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:Manrope,Arial,sans-serif;font-size:14px;font-weight:800;letter-spacing:.3px}
+.monogram span{display:none}.header nav{border-color:#ffffff22;background:#17171750}.contact-button{border-color:#ffffff30;gap:16px;padding:11px 18px;font-size:14px;font-weight:600}.scene-navigation button{border-color:#ffffff30}.intro-caption h1{letter-spacing:1.3px}.intro-caption h1 span{color:#d4d4d4}.footer-sub{color:#a3a3a3}.detail-content{text-shadow:none}
+/* Studio portrait supplies the contrast directly, without a grey photo overlay. */
+.portrait-wash{background:radial-gradient(ellipse at 50% 38%,#414141 0%,#252525 48%,#101010 90%);filter:none}
+.portrait-composition .portrait-image{height:138%;top:-5%;filter:none;mask-image:linear-gradient(90deg,transparent 0%,black 14%,black 86%,transparent 100%)}
+.portrait-shade{background:linear-gradient(0deg,#050505b0,transparent 32%,#05050520),linear-gradient(90deg,#05050545,transparent 30%,transparent 76%,#05050545)}
+.portrait-stage:not(.portrait-scene-0) .portrait-shade{background:linear-gradient(90deg,#080808f5 0%,#080808e0 28%,#08080870 55%,#08080805 80%),linear-gradient(0deg,#080808b0,transparent 35%)}
+@media(max-width:760px){.portrait-wash{filter:none}.portrait-composition .portrait-image{height:120%;top:2%}.portrait-stage:not(.portrait-scene-0) .portrait-shade{background:#080808c9}}

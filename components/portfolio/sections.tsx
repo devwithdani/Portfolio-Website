@@ -1,6 +1,6 @@
 /* oxlint-disable next/no-img-element -- Native local images preserve the existing transform-based portrait; Vinext has no configured image optimizer. */
 'use client';
-import { ArrowRight, ArrowUpRight, X } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Check, X } from 'lucide-react';
 import {
   Dialog,
   DialogTrigger,
@@ -16,7 +16,7 @@ import {
   contact,
   type Project,
 } from '@/lib/portfolio-content';
-import type { MouseEvent } from 'react';
+import { useState, type MouseEvent } from 'react';
 
 type Go = (scene: number) => unknown;
 export function SectionLink({
@@ -164,6 +164,13 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
   );
 }
 export function PortfolioSections({ scene, go }: { scene: number; go: Go }) {
+  const [emailCopied, setEmailCopied] = useState(false);
+  const copyEmail = () => {
+    if (!contact.email) return;
+    navigator.clipboard?.writeText(contact.email).catch(() => {});
+    setEmailCopied(true);
+    setTimeout(() => setEmailCopied(false), 2000);
+  };
   if (scene === 1)
     return (
       <div className="panel-inner hero-panel">
@@ -274,9 +281,6 @@ export function PortfolioSections({ scene, go }: { scene: number; go: Go }) {
           Ik verdiep me verder in AI-agents, API-integraties en de backend
           achter digitale producten. Wat ik leer, pas ik toe in eigen werk.
         </p>
-        <SectionLink scene={5} id="over-mij" go={go} className="section-next">
-          De persoon achter het werk <ArrowRight size={18} />
-        </SectionLink>
       </div>
     );
   if (scene === 5)
@@ -291,24 +295,33 @@ export function PortfolioSections({ scene, go }: { scene: number; go: Go }) {
           dingen te bouwen.
         </h2>
         <p className="panel-lead">
-          Ik ben Dani Roemgens, 21 jaar. Ik werk op het snijvlak van AI,
-          development en design.
+          Ik ben Dani, 21 jaar, en ik ben van nature iemand die graag dingen
+          uitzoekt, probeert en zelf wil begrijpen hoe iets werkt. Als ik
+          ergens nieuwsgierig naar ben, blijf ik er meestal net zo lang mee
+          bezig tot ik er iets van snap of iets werkends van heb gemaakt.
         </p>
         <p className="panel-copy">
-          Mijn interesse groeide van technische problemen oplossen naar zelf
-          digitale oplossingen maken. Bij IT-ondersteuning leerde ik problemen
-          samen met een team onderzoeken. In digitale projecten ontdekte ik
-          hoeveel je zelf kunt bouwen door gericht uit te proberen en door te
-          zetten.
+          Buiten development vind ik het belangrijk om ook gewoon te genieten
+          van het leven. Ik breng graag tijd door met mijn vriendin, ga graag
+          op vakantie en vind het leuk om nieuwe plekken te ontdekken. Even
+          weg van een scherm doet soms net zoveel goed als een avond lang
+          bouwen.
         </p>
         <p className="panel-copy">
-          Ik leer zelfstandig, werk vrijwel dagelijks met AI en bouw websites,
-          tools en eigen producten. Daarbij wil ik begrijpen waarom iets werkt —
-          en hoe ik het duidelijker, bruikbaarder en beter kan maken.
+          Tegelijk ben ik iemand die moeilijk stil kan zitten als ik eenmaal
+          een idee in mijn hoofd heb. Dat kan een website zijn, iets met AI,
+          een tool, een nieuw concept of gewoon iets waarvan ik denk: dit moet
+          slimmer kunnen.
         </p>
         <p className="panel-copy">
-          Ik zoek een omgeving waarin ik kan bijdragen, verder kan leren en
-          samen met anderen nuttige dingen kan bouwen.
+          Ik leer vooral door te doen. Dingen proberen, fouten maken, opnieuw
+          beginnen en stap voor stap beter begrijpen waarom iets werkt. Juist
+          dat proces vind ik leuk.
+        </p>
+        <p className="panel-copy">
+          Uiteindelijk wil ik mezelf blijven ontwikkelen, werk doen waar ik
+          energie van krijg en samen met andere mensen dingen bouwen waar je
+          echt iets aan hebt.
         </p>
         <SectionLink scene={6} id="contact" go={go} className="primary-link">
           Kennismaken <ArrowUpRight size={18} />
@@ -346,9 +359,21 @@ export function PortfolioSections({ scene, go }: { scene: number; go: Go }) {
               href={item.href}
               target={item.label === 'E-mail' ? undefined : '_blank'}
               rel="noreferrer"
+              onClick={item.label === 'E-mail' ? copyEmail : undefined}
             >
-              <span>{item.label}</span>
-              <ArrowUpRight size={20} />
+              <span className="contact-label">
+                {item.label}
+                {item.label === 'E-mail' && (
+                  <span className="contact-value">{item.value}</span>
+                )}
+              </span>
+              {item.label === 'E-mail' && emailCopied ? (
+                <span className="contact-copied">
+                  Gekopieerd <Check size={18} />
+                </span>
+              ) : (
+                <ArrowUpRight size={20} />
+              )}
             </a>
           ) : (
             <div key={item.label} className="contact-pending">
@@ -358,9 +383,6 @@ export function PortfolioSections({ scene, go }: { scene: number; go: Go }) {
           ),
         )}
       </div>
-      <p className="case-note">
-        Mijn contactgegevens en profielpagina’s worden binnenkort toegevoegd.
-      </p>
       <div className="signature">
         Dani Roemgens<span>AI & Digital Developer</span>
       </div>

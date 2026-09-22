@@ -1,8 +1,10 @@
 /** Public portfolio content. Leave unknown URLs and case details null; never use fake links. */
 export const contact = {
-  email: null as string | null,
-  linkedin: null as string | null,
-  github: null as string | null,
+  email: 'daniroemgens@gmail.com' as string | null,
+  linkedin: 'https://www.linkedin.com/in/dani-roemgens-816318282/' as
+    | string
+    | null,
+  github: 'https://github.com/devwithdani' as string | null,
   cv: null as string | null,
 };
 export type Project = {

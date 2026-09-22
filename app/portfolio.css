@@ -436,6 +436,22 @@ a {
   font-size: 14px;
   color: #aaa;
 }
+.contact-label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.contact-value {
+  font-size: 14px;
+  color: #aaa;
+}
+.contact-copied {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--primary);
+}
 .contact-panel .signature {
   max-width: 620px;
   font-family: Manrope, Arial, sans-serif;
@@ -680,7 +696,8 @@ a {
 }
 
 /* A scrollable editorial column beside the fixed portrait. */
-.scene-content#start {
+.scene-content#start,
+.scene-content#over-mij {
   inset: 12px auto 18px clamp(20px, 2.5vw, 40px);
   width: 38%;
   max-width: 470px;
@@ -691,17 +708,21 @@ a {
   scrollbar-color: #777 #ffffff0a;
   outline-offset: 3px;
 }
-#start::-webkit-scrollbar {
+#start::-webkit-scrollbar,
+#over-mij::-webkit-scrollbar {
   width: 6px;
 }
-#start::-webkit-scrollbar-track {
+#start::-webkit-scrollbar-track,
+#over-mij::-webkit-scrollbar-track {
   background: #ffffff0a;
 }
-#start::-webkit-scrollbar-thumb {
+#start::-webkit-scrollbar-thumb,
+#over-mij::-webkit-scrollbar-thumb {
   background: #777;
   border-radius: 6px;
 }
-#start .hero-panel {
+#start .hero-panel,
+#over-mij .about-panel {
   margin: 0;
   max-width: none;
   padding: 18px 26px 36px 0;
@@ -736,7 +757,8 @@ a {
   gap: 14px 24px;
   margin-top: 26px;
 }
-.scene-1 .portrait-stage .portrait-shade {
+.scene-1 .portrait-stage .portrait-shade,
+.scene-5 .portrait-stage .portrait-shade {
   background:
     linear-gradient(
       90deg,
@@ -748,11 +770,13 @@ a {
     linear-gradient(0deg, #080808b0, transparent 35%);
 }
 @media (min-width: 1600px) {
-  .scene-content#start {
+  .scene-content#start,
+  .scene-content#over-mij {
     width: 36%;
     max-width: 540px;
   }
-  #start .hero-panel {
+  #start .hero-panel,
+  #over-mij .about-panel {
     padding-right: 32px;
   }
   .hero-story p {
@@ -760,14 +784,16 @@ a {
   }
 }
 @media (max-width: 760px) {
-  .scene-content#start {
+  .scene-content#start,
+  .scene-content#over-mij {
     left: 20px;
     width: calc(100% - 40px);
     max-width: 470px;
     inset-block: 8px 12px;
     height: calc(100% - 20px);
   }
-  #start .hero-panel {
+  #start .hero-panel,
+  #over-mij .about-panel {
     padding: 16px 20px 28px 0;
   }
   #start h2 {
@@ -775,7 +801,8 @@ a {
     max-width: 350px;
     margin-bottom: 26px;
   }
-  .scene-1 .portrait-stage .portrait-shade {
+  .scene-1 .portrait-stage .portrait-shade,
+  .scene-5 .portrait-stage .portrait-shade {
     background: linear-gradient(90deg, #080808ed, #080808b8 72%, #08080890);
   }
   .hero-story p {

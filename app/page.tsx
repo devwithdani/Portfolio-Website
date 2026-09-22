@@ -1,5 +1,6 @@
 'use client';
 import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react';
+import { CustomCursor } from '@/components/portfolio/custom-cursor';
 import { Portrait } from '@/components/portfolio/portrait';
 import {
   PortfolioSections,
@@ -18,6 +19,7 @@ export default function Home() {
     <main
       className={`portfolio scene-${active} ${reading ? 'portfolio--reading' : ''}`}
     >
+      <CustomCursor />
       <Portrait scene={portraitScene} step={step} />
       <SectionLink scene={1} id="start" go={go} className="skip-link">
         Naar het portfolio

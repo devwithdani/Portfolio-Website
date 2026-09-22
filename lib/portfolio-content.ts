@@ -48,11 +48,13 @@ export const projects: Project[] = [
   },
 ];
 export const experience = [
-  { name: 'Independent projects', role: 'AI · Development · Automation', text: 'Eigen websites, AI-tools en een AI control center. Zelfstandig leren door ideeën te bouwen, te testen en verder te ontwikkelen.' },
-  { name: 'Digital & Creative Projects', role: 'Web Development · Branding · Digital', text: 'Websites, branding en digitale werkzaamheden voor ondernemersprojecten binnen het Nederlandse gereguleerde cannabisexperiment. Voor een festival werkte ik aan een website, ticketsysteem en social-media-uitingen.' },
-  { name: 'Dr. Hitti Gezondheidsmiddelen', role: 'IT / Technical Support', text: 'Technische ondersteuning bij computers, interne software en callsystemen. Samen met het IT-team technische problemen onderzoeken en oplossen.' },
-  { name: 'NG Perfumes', role: 'Logistiek medewerker', text: 'Werkervaring in de logistiek.' },
-  { name: 'Jumbo', role: 'Medewerker', text: 'Werkervaring in de supermarkt.' },
+  { name: 'Independent projects', role: 'AI · Development · Automation', text: 'Ik ontwikkel eigen websites, AI-tools en een AI control center, van idee tot werkend prototype. Door nieuwe technieken direct toe te passen en mijn projecten te verbeteren, bouw ik zelfstandig aan mijn kennis van development en automatisering, met aandacht voor ontwerp en gebruiksgemak.' },
+  { name: 'Chris van Asselt', role: 'Brand Manager · Digital Marketing · Events', text: 'Als brand manager help ik Chris van Asselt bij het opbouwen en ontwikkelen van zijn eigen merk. Ik heb zijn website gebouwd en verzorg de online kant van zijn events, waaronder de digitale promotie en het opzetten en beheren van advertentiecampagnes. Daarnaast ga ik met hem mee naar events in het buitenland en ondersteun ik hem bij zijn aanwezigheid daar.' },
+  { name: 'Jeason Bouwservice', role: 'Softwareontwikkeling · Automatisering · Web & IT', text: 'Twee maanden fulltime meegelopen met zelfstandig timmerman Jeason Eijwoudt om zijn werkprocessen en klantcontact in de praktijk te begrijpen. Op basis daarvan ontwikkel ik software om calculaties, facturatie, klantbeheer en boekhouding te vereenvoudigen en tijd te besparen. Daarnaast heb ik zijn bedrijfswebsite gebouwd en een eigen bedrijfsserver ingericht.' },
+  { name: 'Down Under BV', role: 'IT-inrichting · Kassasystemen · Serverbeheer', text: 'Bijgedragen aan de IT-inrichting van het bedrijf, van het kassasysteem tot de eigen serveromgeving. Een kassasysteem met voorraadbeheer opgezet om verkoop en voorraad overzichtelijk bij te houden. Daarnaast een eigen server ingericht voor onder andere het camerasysteem en andere interne toepassingen, met de nadruk op een praktische inrichting die aansluit op het dagelijkse werk.' },
+  { name: 'Dr. Hittich gezondheidsmiddelen', role: 'IT / Technical Support', text: 'Begonnen in het callcentrum en doorgestroomd naar IT / Technical Support. In die rol hielp ik collega’s bij technische problemen en werkte ik aan het oplossen van storingen in computers, interne software en callsystemen.' },
+  { name: 'CS50', role: 'Cursus · Volledig afgerond', text: 'Tijdens CS50 heb ik de basis van programmeren geleerd: code schrijven, logisch denken en problemen stap voor stap oplossen. De cursus heb ik volledig afgerond.' },
+  { name: 'Jumbo', role: 'Kassaverantwoordelijke', text: 'Verantwoordelijk voor de kassa’s tijdens mijn avonddiensten.' },
 ];
 export const expertise = [
   { title: 'AI', description: 'Vrijwel dagelijks werken met AI en onderzoeken hoe het bruikbaar wordt in digitale producten.', items: ['AI-tools', 'LLMs', 'AI-workflows', 'Automatisering'] },

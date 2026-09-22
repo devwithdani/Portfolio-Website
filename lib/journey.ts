@@ -1,7 +1,7 @@
 export type Journey = { scene: number; step: number };
 export const introWords = [
-  'AI & Digital Developer.',
   'I like to build things.',
+  'AI & Digital Developer.',
   'I turn ideas into reality.',
   'Let’s make something useful.',
 ];

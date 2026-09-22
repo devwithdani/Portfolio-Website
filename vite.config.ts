@@ -54,10 +54,11 @@ export default defineConfig(async ({ command }) => {
       sites(),
       // This portfolio has no database or storage bindings. Use the native
       // local preview; retain the Cloudflare runtime for deployment builds.
-      command === 'build' && cloudflare({
-        viteEnvironment: { name: 'rsc', childEnvironments: ['ssr'] },
-        config: localBindingConfig,
-      }),
+      command === 'build' &&
+        cloudflare({
+          viteEnvironment: { name: 'rsc', childEnvironments: ['ssr'] },
+          config: localBindingConfig,
+        }),
     ],
   };
 });

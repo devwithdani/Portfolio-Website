@@ -1,15 +1,28 @@
 'use client';
 import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react';
 import { CustomCursor } from '@/components/portfolio/custom-cursor';
+import { LanguageToggle } from '@/components/portfolio/language-toggle';
 import { Portrait } from '@/components/portfolio/portrait';
 import {
   PortfolioSections,
   SectionLink,
 } from '@/components/portfolio/sections';
 import { usePortfolioJourney } from '@/hooks/use-portfolio-journey';
+import { LanguageProvider, useLanguage } from '@/lib/i18n';
 import { introWords, sections } from '@/lib/journey';
+import { copy } from '@/lib/translations';
 
 export default function Home() {
+  return (
+    <LanguageProvider>
+      <PortfolioPage />
+    </LanguageProvider>
+  );
+}
+
+function PortfolioPage() {
+  const { lang } = useLanguage();
+  const t = copy[lang];
   const { journey, go, move } = usePortfolioJourney();
   const { scene: active, step } = journey;
   const portraitScene =
@@ -22,13 +35,13 @@ export default function Home() {
       <CustomCursor />
       <Portrait scene={portraitScene} step={step} />
       <SectionLink scene={1} id="start" go={go} className="skip-link">
-        Naar het portfolio
+        {t.skipLink}
       </SectionLink>
       <header className="header">
         <SectionLink scene={0} id="intro" go={go} className="monogram">
           <span className="sr-only">Dani Roemgens — intro</span>DR
         </SectionLink>
-        <nav aria-label="Hoofdnavigatie">
+        <nav aria-label={t.navLabel}>
           {[2, 3, 5].map((index) => (
             <a
               key={index}
@@ -46,13 +59,21 @@ export default function Home() {
                 go(index);
               }}
             >
-              {sections[index].label}
+              {sections[index].label[lang]}
             </a>
           ))}
         </nav>
-        <SectionLink scene={6} id="contact" go={go} className="contact-button">
-          Contact <ArrowUpRight size={16} />
-        </SectionLink>
+        <div className="header-actions">
+          <LanguageToggle />
+          <SectionLink
+            scene={6}
+            id="contact"
+            go={go}
+            className="contact-button"
+          >
+            {t.contactCta} <ArrowUpRight size={16} />
+          </SectionLink>
+        </div>
       </header>
       <div className="scenes">
         {sections.map((section, scene) => (
@@ -62,7 +83,7 @@ export default function Home() {
             tabIndex={-1}
             className={`scene-content ${scene === 0 ? 'intro-content' : 'portfolio-panel'} ${active === scene ? 'is-active' : ''}`}
             data-position={scene < active ? 'before' : 'after'}
-            aria-label={section.label}
+            aria-label={section.label[lang]}
             aria-hidden={active !== scene}
             inert={active !== scene}
           >
@@ -107,7 +128,7 @@ export default function Home() {
           <button
             disabled={active === 0 && step === 0}
             onClick={() => move(-1)}
-            aria-label="Vorig onderdeel"
+            aria-label={t.prevAria}
           >
             <ArrowLeft size={18} />
           </button>
@@ -121,7 +142,7 @@ export default function Home() {
           <button
             disabled={active === sections.length - 1}
             onClick={() => move(1)}
-            aria-label="Volgend onderdeel"
+            aria-label={t.nextAria}
           >
             <ArrowRight size={18} />
           </button>

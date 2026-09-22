@@ -1341,11 +1341,40 @@ body {
 .header .monogram {
   justify-self: start;
 }
-.header .contact-button {
+.header .header-actions {
   justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 14px;
 }
 .header nav {
   justify-self: center;
+}
+.language-toggle {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ffffff30;
+  border-radius: 30px;
+  padding: 3px;
+  gap: 2px;
+}
+.language-toggle button {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #c9c9c9;
+  padding: 6px 12px;
+  border-radius: 20px;
+  transition:
+    color 0.2s,
+    background 0.2s;
+}
+.language-toggle button[aria-pressed='true'] {
+  color: #111;
+  background: #fff;
+}
+.language-toggle button:not([aria-pressed='true']):hover {
+  color: #fff;
 }
 .footer {
   padding-inline: clamp(20px, 2.5vw, 40px);
@@ -1391,6 +1420,12 @@ body {
   .header nav {
     left: 20px;
     right: 20px;
+  }
+  .header-actions {
+    gap: 8px;
+  }
+  .language-toggle button {
+    padding: 5px 9px;
   }
   .footer {
     padding-inline: 20px;

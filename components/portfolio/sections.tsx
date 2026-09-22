@@ -1,6 +1,6 @@
 /* oxlint-disable next/no-img-element -- Native local images preserve the existing transform-based portrait; Vinext has no configured image optimizer. */
 'use client';
-import { ArrowRight, ArrowUpRight, Check, X } from 'lucide-react';
+import { ArrowUpRight, Check, X } from 'lucide-react';
 import {
   Dialog,
   DialogTrigger,
@@ -9,13 +9,9 @@ import {
   DialogDescription,
   DialogClose,
 } from '@/components/ui/dialog';
-import {
-  projects,
-  experience,
-  expertise,
-  contact,
-  type Project,
-} from '@/lib/portfolio-content';
+import { contact, type Project } from '@/lib/portfolio-content';
+import { useLanguage } from '@/lib/i18n';
+import { copy } from '@/lib/translations';
 import { useState, type MouseEvent } from 'react';
 
 type Go = (scene: number) => unknown;
@@ -74,6 +70,8 @@ function ProjectMedia({ media }: { media: Project['media'] }) {
   );
 }
 function ProjectCard({ project, index }: { project: Project; index: number }) {
+  const { lang } = useLanguage();
+  const t = copy[lang].projectDialog;
   return (
     <article className="project-card">
       {project.media?.kind === 'image' && (
@@ -95,10 +93,10 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       <p>{project.summary}</p>
       <Dialog>
         <DialogTrigger className="case-trigger">
-          Bekijk project <ArrowUpRight size={18} />
+          {t.viewProject} <ArrowUpRight size={18} />
         </DialogTrigger>
         <DialogContent className="project-dialog" showCloseButton={false}>
-          <DialogClose className="case-close" aria-label="Project sluiten">
+          <DialogClose className="case-close" aria-label={t.closeAria}>
             <X size={20} />
           </DialogClose>
           <p className="section-kicker">{project.category}</p>
@@ -109,33 +107,28 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           <ProjectMedia media={project.media} />
           <dl className="case-facts">
             <div>
-              <dt>Mijn rol</dt>
+              <dt>{t.role}</dt>
               <dd>{project.role}</dd>
             </div>
             <div>
-              <dt>Probleem</dt>
-              <dd>
-                {project.problem ?? 'De probleemstelling wordt nog toegevoegd.'}
-              </dd>
+              <dt>{t.problem}</dt>
+              <dd>{project.problem ?? t.problemFallback}</dd>
             </div>
             <div>
-              <dt>Oplossing</dt>
-              <dd>
-                {project.solution ??
-                  'De aanpak en oplossing worden nog toegevoegd.'}
-              </dd>
+              <dt>{t.solution}</dt>
+              <dd>{project.solution ?? t.solutionFallback}</dd>
             </div>
             <div>
-              <dt>Technologie</dt>
+              <dt>{t.technology}</dt>
               <dd>
                 {project.technologies.length
                   ? project.technologies.join(' · ')
-                  : 'De gebruikte technologieën volgen bij de volledige case.'}
+                  : t.technologyFallback}
               </dd>
             </div>
             {project.result && (
               <div>
-                <dt>Resultaat</dt>
+                <dt>{t.result}</dt>
                 <dd>{project.result}</dd>
               </div>
             )}
@@ -154,9 +147,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               ))}
             </div>
           ) : (
-            <p className="case-note">
-              Meer beelden, details en projectlinks volgen.
-            </p>
+            <p className="case-note">{t.moreNote}</p>
           )}
         </DialogContent>
       </Dialog>
@@ -164,6 +155,8 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
   );
 }
 export function PortfolioSections({ scene, go }: { scene: number; go: Go }) {
+  const { lang } = useLanguage();
+  const t = copy[lang];
   const [emailCopied, setEmailCopied] = useState(false);
   const copyEmail = () => {
     if (!contact.email) return;
@@ -175,45 +168,23 @@ export function PortfolioSections({ scene, go }: { scene: number; go: Go }) {
     return (
       <div className="panel-inner hero-panel">
         <p className="section-kicker">
-          <span>01</span> DANI ROEMGENS
+          <span>01</span> {t.hero.kickerLabel}
         </p>
         <h2>
-          AI & Digital
+          {t.hero.headingLine1}
           <br />
-          Developer<span className="period">.</span>
+          {t.hero.headingLine2}
+          <span className="period">.</span>
         </h2>
         <div className="hero-story">
           <p>
-            <strong>
-              Ik bouw liever iets dan dat ik er alleen over praat.
-            </strong>
+            <strong>{t.hero.lead}</strong>
           </p>
+          {t.hero.paragraphs.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
           <p>
-            Geef me een idee, een probleem of zelfs maar een halve gedachte en
-            ik wil weten hoe ik er iets werkends van kan maken. Soms wordt dat
-            een website, soms een eigen tool, een automatisering of iets met AI
-            waarvan ik van tevoren zelf nog niet precies weet waar het eindigt.
-          </p>
-          <p>
-            Juist dat proces vind ik interessant: uitzoeken hoe iets werkt,
-            tegen problemen aanlopen, opnieuw proberen en uiteindelijk iets
-            bouwen dat eerst alleen in je hoofd bestond.
-          </p>
-          <p>
-            Ik combineer development, AI en design omdat ik niet alleen wil dat
-            iets technisch werkt. Het moet logisch voelen, goed ogen en vooral
-            daadwerkelijk bruikbaar zijn.
-          </p>
-          <p>
-            Nieuwe technieken leer ik het liefst niet uit alleen theorie, maar
-            door ze meteen toe te passen in echte projecten. Zo blijf ik mezelf
-            uitdagen, nieuwe dingen proberen en steeds beter begrijpen wat er
-            allemaal mogelijk is met technologie.
-          </p>
-          <p>
-            <strong>
-              Van “zou dit kunnen?” naar “het werkt.” Daar krijg ik energie van.
-            </strong>
+            <strong>{t.hero.closing}</strong>
           </p>
         </div>
       </div>
@@ -222,26 +193,23 @@ export function PortfolioSections({ scene, go }: { scene: number; go: Go }) {
     return (
       <div className="panel-inner">
         <p className="section-kicker">
-          <span>02</span> PROJECTEN
+          <span>02</span> {t.projectsScene.kickerLabel}
         </p>
-        <h2>Coming soon.</h2>
+        <h2>{t.projectsScene.heading}</h2>
       </div>
     );
   if (scene === 3)
     return (
       <div className="panel-inner">
         <p className="section-kicker">
-          <span>03</span> ERVARING
+          <span>03</span> {t.experienceScene.kickerLabel}
         </p>
         <div className="section-heading">
-          <h2>Een praktische basis.</h2>
-          <p>
-            Mijn achtergrond verbindt werkervaring, technische ondersteuning en
-            digitale projecten.
-          </p>
+          <h2>{t.experienceScene.heading}</h2>
+          <p>{t.experienceScene.lead}</p>
         </div>
         <ol className="experience-timeline">
-          {experience.map((item) => (
+          {t.experience.map((item) => (
             <li key={item.name}>
               <div>
                 <h3>{item.name}</h3>
@@ -257,14 +225,14 @@ export function PortfolioSections({ scene, go }: { scene: number; go: Go }) {
     return (
       <div className="panel-inner">
         <p className="section-kicker">
-          <span>04</span> EXPERTISE
+          <span>04</span> {t.expertiseScene.kickerLabel}
         </p>
         <div className="section-heading">
-          <h2>AI. Development. Design.</h2>
-          <p>Drie gebieden die in mijn projecten samenkomen.</p>
+          <h2>{t.expertiseScene.heading}</h2>
+          <p>{t.expertiseScene.lead}</p>
         </div>
         <div className="expertise-grid">
-          {expertise.map((area) => (
+          {t.expertise.map((area) => (
             <article key={area.title}>
               <h3>{area.title}</h3>
               <p>{area.description}</p>
@@ -277,67 +245,40 @@ export function PortfolioSections({ scene, go }: { scene: number; go: Go }) {
             </article>
           ))}
         </div>
-        <p className="learning-note">
-          Ik verdiep me verder in AI-agents, API-integraties en de backend
-          achter digitale producten. Wat ik leer, pas ik toe in eigen werk.
-        </p>
+        <p className="learning-note">{t.expertiseScene.learningNote}</p>
       </div>
     );
   if (scene === 5)
     return (
       <div className="panel-inner about-panel">
         <p className="section-kicker">
-          <span>05</span> OVER MIJ
+          <span>05</span> {t.about.kickerLabel}
         </p>
         <h2>
-          Ik leer door
+          {t.about.headingLine1}
           <br />
-          dingen te bouwen.
+          {t.about.headingLine2}
         </h2>
-        <p className="panel-lead">
-          Ik ben Dani, 21 jaar, en ik ben van nature iemand die graag dingen
-          uitzoekt, probeert en zelf wil begrijpen hoe iets werkt. Als ik
-          ergens nieuwsgierig naar ben, blijf ik er meestal net zo lang mee
-          bezig tot ik er iets van snap of iets werkends van heb gemaakt.
-        </p>
-        <p className="panel-copy">
-          Buiten development vind ik het belangrijk om ook gewoon te genieten
-          van het leven. Ik breng graag tijd door met mijn vriendin, ga graag
-          op vakantie en vind het leuk om nieuwe plekken te ontdekken. Even
-          weg van een scherm doet soms net zoveel goed als een avond lang
-          bouwen.
-        </p>
-        <p className="panel-copy">
-          Tegelijk ben ik iemand die moeilijk stil kan zitten als ik eenmaal
-          een idee in mijn hoofd heb. Dat kan een website zijn, iets met AI,
-          een tool, een nieuw concept of gewoon iets waarvan ik denk: dit moet
-          slimmer kunnen.
-        </p>
-        <p className="panel-copy">
-          Ik leer vooral door te doen. Dingen proberen, fouten maken, opnieuw
-          beginnen en stap voor stap beter begrijpen waarom iets werkt. Juist
-          dat proces vind ik leuk.
-        </p>
-        <p className="panel-copy">
-          Uiteindelijk wil ik mezelf blijven ontwikkelen, werk doen waar ik
-          energie van krijg en samen met andere mensen dingen bouwen waar je
-          echt iets aan hebt.
-        </p>
+        {t.about.paragraphs.map((paragraph, index) => (
+          <p
+            key={paragraph}
+            className={index === 0 ? 'panel-lead' : 'panel-copy'}
+          >
+            {paragraph}
+          </p>
+        ))}
         <SectionLink scene={6} id="contact" go={go} className="primary-link">
-          Kennismaken <ArrowUpRight size={18} />
+          {t.about.cta} <ArrowUpRight size={18} />
         </SectionLink>
       </div>
     );
   return (
     <div className="panel-inner contact-panel">
       <p className="section-kicker">
-        <span>06</span> CONTACT
+        <span>06</span> {t.contactScene.kickerLabel}
       </p>
-      <h2>Iets bouwen?</h2>
-      <p className="panel-lead">
-        Een rol in je team, een digitaal project of gewoon kennismaken? Ik ga
-        graag in gesprek.
-      </p>
+      <h2>{t.contactScene.heading}</h2>
+      <p className="panel-lead">{t.contactScene.lead}</p>
       <div className="contact-links">
         {[
           {
@@ -369,7 +310,7 @@ export function PortfolioSections({ scene, go }: { scene: number; go: Go }) {
               </span>
               {item.label === 'E-mail' && emailCopied ? (
                 <span className="contact-copied">
-                  Gekopieerd <Check size={18} />
+                  {t.contactScene.copied} <Check size={18} />
                 </span>
               ) : (
                 <ArrowUpRight size={20} />
@@ -378,13 +319,13 @@ export function PortfolioSections({ scene, go }: { scene: number; go: Go }) {
           ) : (
             <div key={item.label} className="contact-pending">
               <span>{item.label}</span>
-              <span>Volgt binnenkort</span>
+              <span>{t.contactScene.comingSoon}</span>
             </div>
           ),
         )}
       </div>
       <div className="signature">
-        Dani Roemgens<span>AI & Digital Developer</span>
+        Dani Roemgens<span>{t.contactScene.signatureRole}</span>
       </div>
     </div>
   );

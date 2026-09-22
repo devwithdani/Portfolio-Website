@@ -1,3 +1,5 @@
+import type { Lang } from './i18n';
+
 export type Journey = { scene: number; step: number };
 export const introWords = [
   'I like to build things.',
@@ -5,14 +7,14 @@ export const introWords = [
   'I turn ideas into reality.',
   'Let’s make something useful.',
 ];
-export const sections = [
-  { id: 'intro', label: 'Intro' },
-  { id: 'start', label: 'Dani Roemgens' },
-  { id: 'projecten', label: 'Projecten' },
-  { id: 'ervaring', label: 'Ervaring' },
-  { id: 'expertise', label: 'Expertise' },
-  { id: 'over-mij', label: 'Over mij' },
-  { id: 'contact', label: 'Contact' },
+export const sections: { id: string; label: Record<Lang, string> }[] = [
+  { id: 'intro', label: { nl: 'Intro', en: 'Intro' } },
+  { id: 'start', label: { nl: 'Dani Roemgens', en: 'Dani Roemgens' } },
+  { id: 'projecten', label: { nl: 'Projecten', en: 'Projects' } },
+  { id: 'ervaring', label: { nl: 'Ervaring', en: 'Experience' } },
+  { id: 'expertise', label: { nl: 'Expertise', en: 'Expertise' } },
+  { id: 'over-mij', label: { nl: 'Over mij', en: 'About me' } },
+  { id: 'contact', label: { nl: 'Contact', en: 'Contact' } },
 ];
 export function advanceJourney(current: Journey, direction: number): Journey {
   const delta = Math.sign(direction);

@@ -1,7 +1,11 @@
 /* oxlint-disable next/no-img-element -- Native local images preserve the existing transform-based portrait; Vinext has no configured image optimizer. */
 'use client';
 import { useEffect, useRef } from 'react';
+import { useLanguage } from '@/lib/i18n';
+import { copy } from '@/lib/translations';
 export function Portrait({ scene, step }: { scene: number; step: number }) {
+  const { lang } = useLanguage();
+  const t = copy[lang];
   const container = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -45,7 +49,7 @@ export function Portrait({ scene, step }: { scene: number; step: number }) {
     <figure
       ref={container}
       className={`portrait-stage portrait-scene-${scene} portrait-step-${step}`}
-      aria-label="Portretten van Dani Roemgens"
+      aria-label={t.portraitAria}
     >
       <div className="portrait-wash" />
       <div className="portrait-composition">
@@ -56,11 +60,7 @@ export function Portrait({ scene, step }: { scene: number; step: number }) {
               height={2048}
               className="portrait-image"
               src="/dani-studio-v1.png"
-              alt={
-                scene === 0 || scene === 2
-                  ? 'Dani Roemgens, zwart-witportret in een donker overhemd'
-                  : ''
-              }
+              alt={scene === 0 || scene === 2 ? t.portraitAlt0 : ''}
               fetchPriority="high"
             />
           </div>
@@ -74,7 +74,7 @@ export function Portrait({ scene, step }: { scene: number; step: number }) {
               height={2048}
               className="portrait-image"
               src="/dani-ai.png"
-              alt={scene === 1 ? 'Dani Roemgens kijkt naar links' : ''}
+              alt={scene === 1 ? t.portraitAlt1 : ''}
               loading="lazy"
             />
           </div>
@@ -88,7 +88,7 @@ export function Portrait({ scene, step }: { scene: number; step: number }) {
               height={2048}
               className="portrait-image"
               src="/dani-buiten.png"
-              alt={scene === 3 ? 'Dani Roemgens buiten op een plein' : ''}
+              alt={scene === 3 ? t.portraitAlt3 : ''}
               loading="lazy"
             />
           </div>

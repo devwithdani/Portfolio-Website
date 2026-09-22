@@ -46,30 +46,33 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 }
 export function PortfolioSections({ scene, go }: { scene: number; go: Go }) {
   if (scene === 1) return <div className="panel-inner hero-panel">
-    <p className="section-kicker">DANI ROEMGENS</p>
+    <p className="section-kicker"><span>01</span> DANI ROEMGENS</p>
     <h2>AI & Digital<br />Developer<span className="period">.</span></h2>
-    <p className="panel-lead">Ik combineer AI, development en design om digitale ideeën om te zetten in werkende producten.</p>
-    <p className="panel-copy">Van technische problemen oplossen tot websites en eigen AI-tools bouwen. Ik leer door te maken — en maak door tot een idee werkt.</p>
-    <div className="panel-actions"><SectionLink scene={2} id="projecten" go={go} className="primary-link">Bekijk mijn projecten <ArrowRight size={18} /></SectionLink><SectionLink scene={5} id="over-mij" go={go} className="quiet-link">Over mij</SectionLink></div>
+    <div className="hero-story">
+      <p><strong>Ik bouw liever iets dan dat ik er alleen over praat.</strong></p>
+      <p>Geef me een idee, een probleem of zelfs maar een halve gedachte en ik wil weten hoe ik er iets werkends van kan maken. Soms wordt dat een website, soms een eigen tool, een automatisering of iets met AI waarvan ik van tevoren zelf nog niet precies weet waar het eindigt.</p>
+      <p>Juist dat proces vind ik interessant: uitzoeken hoe iets werkt, tegen problemen aanlopen, opnieuw proberen en uiteindelijk iets bouwen dat eerst alleen in je hoofd bestond.</p>
+      <p>Ik combineer development, AI en design omdat ik niet alleen wil dat iets technisch werkt. Het moet logisch voelen, goed ogen en vooral daadwerkelijk bruikbaar zijn.</p>
+      <p>Nieuwe technieken leer ik het liefst niet uit alleen theorie, maar door ze meteen toe te passen in echte projecten. Zo blijf ik mezelf uitdagen, nieuwe dingen proberen en steeds beter begrijpen wat er allemaal mogelijk is met technologie.</p>
+      <p><strong>Van “zou dit kunnen?” naar “het werkt.” Daar krijg ik energie van.</strong></p>
+    </div>
   </div>;
   if (scene === 2) return <div className="panel-inner">
-    <p className="section-kicker">PROJECTEN</p><div className="section-heading"><h2>Van idee naar uitvoering.</h2><p>Eigen producten en digitaal werk voor anderen. Dit is waar mijn kennis praktisch wordt.</p></div>
-    <div className="project-grid">{projects.map((project, index) => <ProjectCard key={project.id} project={project} index={index} />)}</div>
-    <SectionLink scene={3} id="ervaring" go={go} className="section-next">Mijn ervaring <ArrowRight size={18} /></SectionLink>
+    <p className="section-kicker"><span>02</span> PROJECTEN</p>
+    <h2>Coming soon.</h2>
   </div>;
   if (scene === 3) return <div className="panel-inner">
-    <p className="section-kicker">ERVARING</p><div className="section-heading"><h2>Een praktische basis.</h2><p>Mijn achtergrond verbindt werkervaring, technische ondersteuning en digitale projecten.</p></div>
+    <p className="section-kicker"><span>03</span> ERVARING</p><div className="section-heading"><h2>Een praktische basis.</h2><p>Mijn achtergrond verbindt werkervaring, technische ondersteuning en digitale projecten.</p></div>
     <ol className="experience-timeline">{experience.map(item => <li key={item.name}><div><h3>{item.name}</h3><span>{item.role}</span></div><p>{item.text}</p></li>)}</ol>
-    <SectionLink scene={4} id="expertise" go={go} className="section-next">Waar ik mee werk <ArrowRight size={18} /></SectionLink>
   </div>;
   if (scene === 4) return <div className="panel-inner">
-    <p className="section-kicker">EXPERTISE</p><div className="section-heading"><h2>AI. Development. Design.</h2><p>Drie gebieden die in mijn projecten samenkomen.</p></div>
+    <p className="section-kicker"><span>04</span> EXPERTISE</p><div className="section-heading"><h2>AI. Development. Design.</h2><p>Drie gebieden die in mijn projecten samenkomen.</p></div>
     <div className="expertise-grid">{expertise.map(area => <article key={area.title}><h3>{area.title}</h3><p>{area.description}</p><ul>{area.items.map(item => <li key={item}>{item}</li>)}</ul>{area.note && <p className="expertise-note">{area.note}</p>}</article>)}</div>
     <p className="learning-note">Ik verdiep me verder in AI-agents, API-integraties en de backend achter digitale producten. Wat ik leer, pas ik toe in eigen werk.</p>
     <SectionLink scene={5} id="over-mij" go={go} className="section-next">De persoon achter het werk <ArrowRight size={18} /></SectionLink>
   </div>;
   if (scene === 5) return <div className="panel-inner about-panel">
-    <p className="section-kicker">OVER MIJ</p><h2>Ik leer door<br />dingen te bouwen.</h2>
+    <p className="section-kicker"><span>05</span> OVER MIJ</p><h2>Ik leer door<br />dingen te bouwen.</h2>
     <p className="panel-lead">Ik ben Dani Roemgens, 21 jaar. Ik werk op het snijvlak van AI, development en design.</p>
     <p className="panel-copy">Mijn interesse groeide van technische problemen oplossen naar zelf digitale oplossingen maken. Bij IT-ondersteuning leerde ik problemen samen met een team onderzoeken. In digitale projecten ontdekte ik hoeveel je zelf kunt bouwen door gericht uit te proberen en door te zetten.</p>
     <p className="panel-copy">Ik leer zelfstandig, werk vrijwel dagelijks met AI en bouw websites, tools en eigen producten. Daarbij wil ik begrijpen waarom iets werkt — en hoe ik het duidelijker, bruikbaarder en beter kan maken.</p>
@@ -77,7 +80,7 @@ export function PortfolioSections({ scene, go }: { scene: number; go: Go }) {
     <SectionLink scene={6} id="contact" go={go} className="primary-link">Kennismaken <ArrowUpRight size={18} /></SectionLink>
   </div>;
   return <div className="panel-inner contact-panel">
-    <p className="section-kicker">CONTACT</p><h2>Iets bouwen?</h2><p className="panel-lead">Een rol in je team, een digitaal project of gewoon kennismaken? Ik ga graag in gesprek.</p>
+    <p className="section-kicker"><span>06</span> CONTACT</p><h2>Iets bouwen?</h2><p className="panel-lead">Een rol in je team, een digitaal project of gewoon kennismaken? Ik ga graag in gesprek.</p>
     <div className="contact-links">
       {[
         { label: 'E-mail', value: contact.email, href: contact.email ? `mailto:${contact.email}` : null },

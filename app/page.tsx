@@ -122,7 +122,9 @@ function PortfolioPage() {
       <footer className="footer">
         <div className="footer-brand">
           <span className="status-dot" /> DANI ROEMGENS{' '}
-          <span className="footer-sub">AI & DIGITAL DEVELOPER</span>
+          <a href="/privacy" className="footer-privacy-link">
+            {t.footerPrivacyLink}
+          </a>
         </div>
         <div className="scene-navigation">
           <button

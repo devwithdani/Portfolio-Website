@@ -20,7 +20,7 @@ function PrivacyContent() {
       <div className="privacy-page-inner">
         <div className="privacy-page-top">
           <a href="/" className="privacy-back-link">
-            <ArrowLeft size={16} /> {copy[lang].skipLink === copy.nl.skipLink && lang === 'nl' ? 'Terug naar de site' : t.backLink}
+            <ArrowLeft size={16} /> {t.backLink}
           </a>
           <LanguageToggle />
         </div>

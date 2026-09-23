@@ -71,6 +71,14 @@ type Copy = {
     result: string;
     moreNote: string;
   };
+  privacy: {
+    title: string;
+    updated: string;
+    backLink: string;
+    intro: string;
+    sections: { heading: string; body: string }[];
+  };
+  footerPrivacyLink: string;
   experience: Experience[];
   expertise: Expertise[];
   projects: Project[];
@@ -153,6 +161,40 @@ export const copy: Record<Lang, Copy> = {
       result: 'Resultaat',
       moreNote: 'Meer beelden, details en projectlinks volgen.',
     },
+    privacy: {
+      title: 'Privacyverklaring',
+      updated: 'Laatst bijgewerkt: 23 september 2026',
+      backLink: 'Terug naar de site',
+      intro:
+        'Deze pagina legt uit welke gegevens er worden verwerkt wanneer je deze website bezoekt, en waarom.',
+      sections: [
+        {
+          heading: 'Geen gegevens die ik zelf verzamel',
+          body: 'Deze website heeft geen contactformulieren, geen inlogfunctie en gebruikt geen tracking- of analytics-cookies. Er wordt dus niets door mij actief verzameld of opgeslagen.',
+        },
+        {
+          heading: 'Hosting en serverlogs',
+          body: 'De website wordt gehost via Cloudflare. Zoals bij vrijwel elke website worden bij een bezoek automatisch technische gegevens verwerkt, zoals je IP-adres, browsertype en tijdstip van bezoek. Dit gebeurt uitsluitend voor de beveiliging en het functioneren van de website, en wordt beheerd door Cloudflare als hostingpartij.',
+        },
+        {
+          heading: 'Cookies',
+          body: 'Deze website plaatst zelf geen cookies.',
+        },
+        {
+          heading: 'Externe links',
+          body: 'De website bevat links naar externe platforms, zoals LinkedIn en GitHub. Voor het privacybeleid van die platforms verwijs ik naar hun eigen voorwaarden.',
+        },
+        {
+          heading: 'Contact',
+          body: 'Heb je vragen over deze privacyverklaring? Stuur een e-mail naar daniroemgens@gmail.com.',
+        },
+        {
+          heading: 'Wijzigingen',
+          body: 'Deze verklaring kan worden aangepast. De datum bovenaan deze pagina geeft aan wanneer de laatste wijziging is doorgevoerd.',
+        },
+      ],
+    },
+    footerPrivacyLink: 'Privacyverklaring',
     experience: [
       {
         name: 'Independent projects',
@@ -355,6 +397,40 @@ export const copy: Record<Lang, Copy> = {
       result: 'Result',
       moreNote: 'More visuals, details, and project links will follow.',
     },
+    privacy: {
+      title: 'Privacy Policy',
+      updated: 'Last updated: September 23, 2026',
+      backLink: 'Back to the site',
+      intro:
+        'This page explains what data is processed when you visit this website, and why.',
+      sections: [
+        {
+          heading: "No data I collect myself",
+          body: 'This website has no contact forms, no login functionality, and uses no tracking or analytics cookies. Nothing is actively collected or stored by me.',
+        },
+        {
+          heading: 'Hosting and server logs',
+          body: 'This website is hosted via Cloudflare. As with virtually every website, technical data is automatically processed on each visit, such as your IP address, browser type, and time of visit. This happens solely for the security and functioning of the website, and is managed by Cloudflare as the hosting provider.',
+        },
+        {
+          heading: 'Cookies',
+          body: 'This website does not place any cookies of its own.',
+        },
+        {
+          heading: 'External links',
+          body: 'This website contains links to external platforms, such as LinkedIn and GitHub. For the privacy practices of those platforms, please refer to their own terms.',
+        },
+        {
+          heading: 'Contact',
+          body: 'Have questions about this privacy policy? Email daniroemgens@gmail.com.',
+        },
+        {
+          heading: 'Changes',
+          body: 'This policy may be updated. The date at the top of this page indicates when it was last changed.',
+        },
+      ],
+    },
+    footerPrivacyLink: 'Privacy Policy',
     experience: [
       {
         name: 'Independent projects',

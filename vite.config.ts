@@ -15,6 +15,10 @@ const isCodexSeatbeltSandbox = process.env.CODEX_SANDBOX === 'seatbelt';
 const localBindingConfig = {
   main: 'vinext/server/fetch-handler',
   compatibility_flags: ['nodejs_compat'],
+  routes: [
+    { pattern: 'dani-roemgens.dev', custom_domain: true },
+    { pattern: 'www.dani-roemgens.dev', custom_domain: true },
+  ],
   d1_databases: d1
     ? [
         {
